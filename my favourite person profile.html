@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My favourite person profile </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <style>
+            body {
+                background-color: cadetblue;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="all"></p>
+        <div class="card">
+            <div class="car-body">
+                <h1 class="card-title">My favourite profile</h1>
+                <h3>Name:<span id="name"></span></h3>
+                <h3>Name: <span id="name"></span></h3>
+                <h3>Phone no: <span id="phone"></span></h3>
+                <h3>Age: <span id="age"></span></h3>
+
+            </div>
+        </div> <script>
+        var student ={
+            name:"Abdul Wasey",
+            phone:"0325181916",
+            age:"10"
+        }
+        var nameEl = document.getElementById("name")
+        nameEl.textContent= student.name;
+        var nameEl = document.getElementById("phone")
+        nameEl.textContent= student.phone;
+
+        var rollE= document.getElementById("age")
+        rollE.textContent= student["age"]
+
+        var allE= document.getElementById("all")
+        allE.textContent =
+        "name :" + student.name + "\n"+
+        "phone no :" + student.phone + "\n"+
+        "age :" + student.age ;
+        
+    </script>
+    </body>
+
+</html>
