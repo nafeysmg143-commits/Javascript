@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>intro to array and callstand</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var environment = [
+            "Tree Plantation",
+            "Beach Cleanup",
+            "Recycling Drive",
+            "Solar Energy",
+            "Water Saving"
+        ];
+        document.write(environment[1]);
+        document.write(environment[3]);
+
+        var technologies = [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ];
+        document.write("<br>");
+        document.write(technologies + "<br>");
+        
+        technologies.pop();
+        document.write("pop: " + technologies);
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        function average(a, b) {
+            return add(a, b) / 2;
+        }
+
+        let result = average(10, 15);
+        document.write("<br>" + result);
+    </script>
+</body>
+</html>
