@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>game profile</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <style>
+        body{
+            text-align:center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            padding:40px;
+            background-color:lightsalmon;
+        }
+    </style>
+    <body>
+        <h1>My game profile</h1>
+        <button onclick="showProfile()">Show Proile</button>
+        <div>Name:<span id="name"></span></div>
+        <div>Score:<span id="score"></span></div>
+        <div>Top score:<span id="record"></span></div>
+        <div>Rank:<span id="rank"></span></div>
+        <div>Greeting:<span id="greeting"></span></div>
+        <div>Stars:<span id="stars"></span></div>
+        <div>Bonus level:<span id="bonus"></span></div>
+        <div>Team name:<span id="team"></span></div>
+        <script>
+            function showProflie() {
+                let name ="Harry";
+                let myscore = 95;
+                let highScore =100;
+                let bonus =null;
+                let team;
+                let isTopscore = myscore ==highScore;
+                let rank;
+                if (myscore >=100){
+                    rank="Platinium"
+                }
+                else if (myscore >=90){
+                    rank="Diamond"
+                }
+                else if (myscore >=80){
+                    rank="Gold"
+                }
+                else if (myscore >=70){   
+                    rank="Silver"
+                }
+                else if (myscore >=60){
+                    rank="Bronze"
+                }
+
+                let hour =new Date().getHours();
+                let greeting;
+                if (hour < 13) {
+                    greeting ="Good Morning!";
+                }
+                else if (hour < 18){
+                    greeting = "Good Afternoon!";
+                }
+                else{
+                    greeting = "Good Evening!";
+                }
+                let star ="";
+                let count=1;
+                while (count<5){
+                    stars=stars + " * ";
+                    count= count+1 ;
+                }
+                document.getElementById("name").innerHTML  =name;
+                document.getElementById("score").innerHTML  =myscore + "out of" + highScore;   
+                document.getElementById("record").innerHTML  =isTopscore;   
+                document.getElementById("rank").innerHTML  =rank;   
+                document.getElementById("greeting").innerHTML  =greeting;   
+                document.getElementById("stars").innerHTML  =stars;   
+                document.getElementById("bonus").innerHTML  =bonus;   
+                document.getElementById("team").innerHTML  =team;      
+
+            }
+        </script>
+    </body>
+</html>
