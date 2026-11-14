@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Classes in javascript </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h>My planet cards</h>
+        <p>Use a javascript classto build planet cars!</p>
+        <button onclick="showplanets()">Show planets!</button>
+        <div class="cards">
+            <div id="card1"></div>
+            <div id="card2"></div>
+            <div id="card3"></div>
+
+            
+        </div>
+        <script>
+            class Planet{
+                constructor (name,fact,size){
+                    this.name=name
+                    this.fact=fact
+                    this.size=size 
+
+                }
+                describe (){
+                    return this.name +":"+ this.fact +":"+this.size;
+                }
+            }
+            function showplanets (){
+                let earth = new Planet("Earth","planet to live on ",3000)
+                let uranus = new Planet ("Uranus","hard to survive over there", 6000)
+                let saturn =new Planet ("Saturn","Has  ring made of ice ",9000)
+
+                document.getElementById("card1").innerHTML
+                "<div class='card'>div class= 'planet-earth'>"+ earth.name + "</div>"+
+                "<div class='planet-fact'>"+ earth.describe() + "</div>";
+                
+                 document.getElementById("card2").innerHTML
+                "<div class='card'>div class= 'planet-earth'>"+ uranium.name + "</div>"+
+                "<div class='planet-fact'>"+ uranium.describe() + "</div>";
+
+                 document.getElementById("card1").innerHTML
+                "<div class='card'>div class= 'planet-earth'>"+ saturn.name + "</div>"+
+                "<div class='planet-fact'>"+ saturn.describe() + "</div>";
+            }
+        </script>
+    </body>
+</html>
