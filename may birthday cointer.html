@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Birthday Countdown Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#e91e63;
+            color: #333;
+            max-width: 600px;
+            margin: 40px auto ;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #e91e63;
+            text-align: center;
+        }
+        h3 {
+            margin-top: 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color:black">🎉Ali's Birthday Countdown Checker🎉</h1>
+
+    <div class="card">
+        <h3>Part 1: /h3>
+        <p id="part1"></p>
+    </div>
+
+    <div class="card">
+        <h3>Part 2: Greeting</h3>
+        <p id="part2"></p>
+    </div>
+
+    <div class="card">
+        <h3>Part 3: Days Left Status</h3>
+        <p id="part3"></p>
+    </div>
+
+    <div class="card">
+        <h3>Part 4: Countdown</h3>
+        <p id="part4"></p>
+    </div>
+
+    <script>
+        
+        var giftIdea = null; 
+        var cakeFlavour;     
+        document.getElementById("part1").innerHTML = 
+            "Gift Idea (empty on purpose): " + giftIdea + "<br>" +
+            "Cake Flavour (never set): " + cakeFlavour;
+
+        
+        var currentHour = new Date().getHours();
+        var greetingMessage = "";
+
+        if (currentHour < 12) {
+            greetingMessage = "Good Morning! Ready for Zara's party?";
+        } else if (currentHour < 18) {
+            greetingMessage = "Good Afternoon! Ready for Zara's party?";
+        } else {
+            greetingMessage = "Good Evening! Ready for Zara's party?";
+        }
+        document.getElementById("part2").innerHTML = greetingMessage;
+
+
+        var daysLeft = 3; 
+        var statusMessage = "";
+
+        if (daysLeft == 0) {
+            statusMessage = "Today is Zara's birthday! Happy Birthday!";
+        } else if (daysLeft == 1) {
+            statusMessage = "Only 1 day left until the party!";
+        } else {
+            statusMessage = "There are " + daysLeft + " days left until Zara's party.";
+        }
+        document.getElementById("part3").innerHTML = statusMessage;
+
+        
+        var countdownText = "";
+        var counter = daysLeft;
+
+        while (counter > 0) {
+            countdownText = countdownText + counter + " days left...<br>";
+            counter--;
+        }
+        countdownText = countdownText + "<strong>Party time!</strong>";
+        document.getElementById("part4").innerHTML = countdownText;
+    </script>
+
+</body>
+</html>
