@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Anomica - Superhero Power Cards</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a2e;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      background-color: #e94560;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: white;
+      color: #333333;
+      width: 240px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Anomica: My Superhero Power Cards</h1>
+  <p>Use a JavaScript class to build superhero cards!</p>
+  <button onclick="showHeroes()">Show Heroes!</button>
+
+  <div class="cards">
+    <div id="card1"></div>
+    <div id="card2"></div>
+    <div id="card3"></div>
+  </div>
+
+  <script>
+    class Superhero {
+      constructor(name, power, strengthLevel) {
+        this.name = name;
+        this.power = power;
+        this.strengthLevel = strengthLevel;
+      }
+
+      describe() {
+        return this.name + ": " + this.power + ": " + this.strengthLevel;
+      }
+    }
+
+    function showHeroes() {
+      let spiderman = new Superhero("Spider-Man", "Web-slinging and Spider-Sense and super strength", 1000);
+      let flashman = new Superhero("Flash-man", "Super strength and super speed power", 9000);
+      let deadpool = new Superhero("Dead Pool", "Super fighting skills and power of being immortal", 8500);
+
+      document.getElementById("card1").innerHTML = 
+        "<div class='card'>" +
+          "<div><strong>" + spiderman.name + "</strong></div>" +
+          "<div>" + spiderman.describe() + "</div>" +
+        "</div>";
+
+      document.getElementById("card2").innerHTML = 
+        "<div class='card'>" +
+          "<div><strong>" + flashman.name + "</strong></div>" +
+          "<div>" + flashman.describe() + "</div>" +
+        "</div>";
+
+      document.getElementById("card3").innerHTML = 
+        "<div class='card'>" +
+          "<div><strong>" + deadpool.name + "</strong></div>" +
+          "<div>" + deadpool.describe() + "</div>" +
+        "</div>";
+    }
+  </script>
+
+</body>
+</html>
