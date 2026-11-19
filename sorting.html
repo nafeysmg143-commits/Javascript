@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>sorting in javascript</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://bootstrapcdn.com">
+  <style>
+    /* Page background color */
+    body {
+      background-color: #e3f2fd;
+    }
+
+    /* Card background color */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #bbdefb;
+    }
+
+    /* Card title color and style */
+    .card-title {
+      color: #0d47a1;
+      background-color: #e8eaf6;
+      padding: 8px 12px;
+      border-radius: 5p;
+
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-1">Playlist Storer</h1>
+    <p class="text-muted mb-4">Manage and sort your songs and play counts.</p>
+
+    <!-- Card 1: Song Names -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Song Names</h3>
+        <button class="btn mr-2" onclick="sortAZ()">Sort A to Z</button>
+        <button class="btn" onclick="sortZA()">Sort Z to A</button>
+        <div id="nameResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+
+    <!-- Card 2: Play Counts -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Play Counts</h3>
+        <button class="btn mr-2" onclick="leastplayed()">Least Played First</button>
+        <button class="btn" onclick="mostplayed()">Most Played First</button>
+        <div id="countResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+
+    <!-- Card 3: Label Every Play Count -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Label Every Play Count</h3>
+        <button class="btn" onclick="addLabel()">Add PlaysLabel</button>
+        <div id="labelResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+
+    <!-- Card 4: New Card with Button -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Add New Song</h3>
+        <button class="btn" onclick="addNewSong()">Add Song "E"</button>
+        <div id="addResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var song = ["A", "B", "C", "D"];
+    var play =["10","50","100","150"];
+
+    document.getElementById("nameResult").innerHTML = "Songs: " + song.join(", ");
+    document.getElementById("countResult").innerHTML = "Count result: " + play.join(", ");
+    document.getElementById("labelResult").innerHTML = "Press the button to get the result: " + play.join(", ");
+    document.getElementById("addResult").innerHTML = "Press the button to add Song E to the list.";
+
+    function sortAZ() {
+      song.sort();
+      document.getElementById("nameResult").innerHTML = "Sorted from A to Z: " + song.join(", ");
+    }
+
+    function sortZA() {
+      song.sort().reverse();
+      document.getElementById("nameResult").innerHTML = "Sorted from Z to A: " + song.join(", ");
+    }
+
+    function leastplayed() {
+      play.sort(function(a, b) { return a - b; });
+      document.getElementById("countResult").innerHTML = "Least played first: " + play.join(", ");
+    }
+
+    function mostplayed() {
+      play.sort(function(a, b) { return b - a; });
+      document.getElementById("countResult").innerHTML = "Most played first: " + play.join(", ");
+    }
+
+    function addLabel() {
+      var add = play.map(function(c) { return c + " plays"; });
+      document.getElementById("labelResult").innerHTML = add.join(", ");
+    }
+
+    function addNewSong() {
+      if (!song.includes("E")) {
+        song.push("E");
+        play.push(75);
+        document.getElementById("addResult").innerHTML = "Added Song E with 75 plays! Updated songs: " + song.join(", ");
+      } else {
+        document.getElementById("addResult").innerHTML = "Song E is already added!";
+      }
+    }
+  </script>
+</body>
+</html>
