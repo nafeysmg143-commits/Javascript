@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Daily Task Manager</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://jsdelivr.net">
+  <style>
+    body {
+      background-color: #e3f2fd;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #bbdefb;
+    }
+
+    .card-title {
+      color: #0d47a1;
+      background-color: #e8eaf6;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .btn {
+      background-color: #1976d2;
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      background-color: #0d47a1;
+      color: #ffffff;
+    }
+
+    .box {
+      background-color: #f8fbff;
+      border: 1px solid #bbdefb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-1">Daily Task Manager</h1>
+    <p class="text-muted mb-4">View, reverse, and map your daily tasks and task times.</p>
+
+    <!-- Card 1: Task Names (using forEach & reverse) -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Task Names</h3>
+        <button class="btn mr-2" onclick="showTasks()">Show All Tasks (forEach)</button>
+        <button class="btn" onclick="reverseTasks()">Reverse Task Order (reverse)</button>
+        <div id="nameResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+
+    <!-- Card 2: Task Times (using forEach & reverse) -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Task Times</h3>
+        <button class="btn mr-2" onclick="showTimes()">Show Task Times (forEach)</button>
+        <button class="btn" onclick="reverseTimes()">Reverse Task Times (reverse)</button>
+        <div id="timeResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+
+    <!-- Card 3: Task Information & Status (using map) -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Task Information (Map)</h3>
+        <button class="btn" onclick="mapTaskInfo()">Show Full Task Information (map)</button>
+        <div id="mapResult" class="box p-3 mt-3 rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Daily task names and their times (in minutes)
+    let taskNames = [
+      "Morning Prayer & Walk",
+      "Check Emails & Messages",
+      "Work on Coding Project",
+      "Lunch Break",
+      "Evening Study & Review"
+    ];
+
+    let taskTimes =20;
+
+    // Show initial information when page loads
+    showTasks();
+    showTimes();
+    mapTaskInfo();
+
+    // Card 1: Using forEach() to list tasks
+    function showTasks() {
+      let text = "null";
+      taskNames.forEach(function(task, index) {
+        text += (index + 1) + ". " + task + "<br>";
+      });
+      document.getElementById("nameResult").innerHTML = text;
+    }
+
+    // Card 1: Using reverse() to flip task order from end of day to start of day
+    function reverseTasks() {
+      let reversed = [...taskNames].reverse();
+      let text = "null";
+      reversed.forEach(function(task, index) {
+        text += (index + 1) + ". " + task + "<br>";
+      });
+      document.getElementById("nameResult").innerHTML = text;
+    }
+
+    // Card 2: Using forEach() to show task times
+    function showTimes() {
+      let text = "";
+      taskTimes.forEach(function(time, index) {
+        text += "Task " + (index + 1) + " Time: " + time + " minutes<br>";
+      });
+      document.getElementById("timeResult").innerHTML = text;
+    }
+
+    // Card 2: Using reverse() to flip task times
+    function reverseTimes() {
+      let reversed = [...taskTimes].reverse();
+      let text = "null";
+      reversed.forEach(function(time, index) {
+        text += "Time: " + time + " minutes<br>";
+      });
+      document.getElementById("timeResult").innerHTML = text;
+    }
+
+    // Card 3: Using map() to combine task names, times, and status info
+    function mapTaskInfo() {
+      let infoList = taskNames.map(function(task, index) {
+        let time = taskTimes[index];
+        let category = time >= 60 ? "Long Session" : "Short Session";
+        return "<strong>" + task + "</strong> — " + time + " mins (" + category + ")";
+      });
+      document.getElementById("mapResult").innerHTML = infoList.join("<br>");
+    }
+  </script>
+</body>
+</html>
+
