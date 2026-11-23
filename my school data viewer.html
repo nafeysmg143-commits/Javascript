@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>School Event Data Viewer</title>
+    <meta name="description" content="Nexus Inter-School Football Tournament Data Viewer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    body {
+        background-color: honeydew;
+        color: darkslategray;
+        padding: 30px;
+        margin: 0 auto;
+        max-width: 700px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: large;
+    }
+    h1 {
+        color: forestgreen;
+        border-bottom: 3px solid lightblue;
+        padding-bottom: 10px;
+    }
+    button {
+        color: white;
+        background-color: seagreen;
+        border: 2px solid darkgreen;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: 0.2s;
+    }
+    button:hover {
+        background-color: forestgreen;
+        transform: scale(1.02);
+    }
+    .card {
+        background-color: white;
+        padding: 24px;
+        border-radius: 10px;
+        border: 2px solid palegreen;
+        border-top: 5px solid lightblue;
+        box-shadow: 0 4px 10px lightgray;
+    }
+    .data-row {
+        margin-bottom: 14px;
+        line-height: 1.5;
+    }
+    .label {
+        font-weight: bold;
+        color: forestgreen;
+    }
+    #json-text {
+        font-family: monospace;
+        background-color: aliceblue;
+        color: darkslateblue;
+        border: 1px solid lightblue;
+        padding: 8px 12px;
+        border-radius: 5px;
+        display: inline-block;
+        word-break: break-all;
+        margin-top: 5px;
+        font-size: 15px;
+    }
+</style>
+<body>
+
+    <h1>School Event Data Viewer</h1>
+    
+    <button onclick="loadEventData()">Show Tournament Data</button>
+
+    <div class="card">
+        <div class="data-row"><span class="label">Inter School Foot-Ball Taurnament:</span> <br><span id="json-text">Waiting for command!...</span></div>
+        <div class="data-row"><span class="label">Tournament Name:</span> <span id="loaded-name">-</span></div>
+        <div class="data-row"><span class="label">Hosted By:</span> <span id="loaded-host">-</span></div>
+        <div class="data-row"><span class="label">Match Date:</span> <span id="loaded-date">-</span></div>
+        <div class="data-row"><span class="label">Ground & City:</span> <span id="loaded-venue">-</span></div>
+        <div class="data-row"><span class="label">Participating Teams:</span> <span id="loaded-teams">-</span></div>
+        <div class="data-row"><span class="label">Entry Fee:</span> <span id="loaded-fee">-</span></div>
+    </div>
+
+    <script>
+        let schoolEvent = {
+            eventName: "Nexus Inter-School Football Tournament",
+            hostedBy: "Nexus School",
+            date: "15 December 2026",
+            venue: "Nexus School",
+            teams: "Nexus School, Evalon High School, Scholastic Islamia",
+            entryFee: "Free for Students/Teachers | Rs. 100 per person (Others)"
+        };
+
+        function loadEventData() {
+            let jsonText = JSON.stringify(schoolEvent);
+            let parsedEvent = JSON.parse(jsonText);
+
+            document.getElementById("json-text").innerHTML = jsonText;
+            document.getElementById("loaded-name").innerHTML = parsedEvent.eventName;
+            document.getElementById("loaded-host").innerHTML = parsedEvent.hostedBy;
+            document.getElementById("loaded-date").innerHTML = parsedEvent.date;
+            document.getElementById("loaded-venue").innerHTML = parsedEvent.venue;
+            document.getElementById("loaded-teams").innerHTML = parsedEvent.teams;
+            document.getElementById("loaded-fee").innerHTML = parsedEvent.entryFee;
+        }
+    </script>
+</body>
+</html>
