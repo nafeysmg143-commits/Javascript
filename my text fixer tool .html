@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Text Fixer</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    body{
+        text-align:center;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 35px;
+        background-color: lightgreen;
+    }
+    h1{
+        color:crimson;
+    }
+    #fixer{
+        border:2px solid crimson;
+        width: 340px;
+        margin:16px auto;
+        padding:12px;
+        border-radius: 10px;
+        background-color: bisque;
+    }
+    .zone{
+        border: 1px solid crimson;
+        margin: 6px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-align: left;
+    }
+    textarea{
+        width: 92%;
+        padding: 8px;
+        border: 1px solid crimson;
+        border-radius: 6px;
+        font-family: Arial, sans-serif;
+    }
+    button{
+        background-color: crimson;
+        color:bisque;
+        padding: 10px 24px;
+        margin: 4px;
+        border-radius:20px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <h1>My Text Fixer</h1>
+    <p>Uses Javascript and the DOM for this activity</p>
+    <div id="fixer">
+        <div class="zone">
+            <textarea id="userText" rows="4" placeholder="Type or paste text here..."></textarea>
+        </div>
+        <div class="zone">Words: <span id="words">0</span></div>
+        <div class="zone">Characters: <span id="chars">0</span></div>
+        
+        <button onclick="makeUpper()">UPPERCASE</button>
+        <button onclick="makeLower()">lowercase</button>
+        <p id="status"></p>
+
+        <script>
+            function makeUpper(){
+                var text = document.getElementById("userText").value;
+                document.getElementById("userText").value = text.toUpperCase();
+                updateInfo("Converted to UPPERCASE");
+            }
+
+            function makeLower(){
+                var text = document.getElementById("userText").value;
+                document.getElementById("userText").value = text.toLowerCase();
+                updateInfo("Converted to lowercase");
+            }
+
+            function updateInfo(message){
+                var currentText = document.getElementById("userText").value;
+                var wordCount = currentText === "" ? 0 : currentText.split(" ").length;
+                
+                document.getElementById("words").innerHTML = wordCount;
+                document.getElementById("chars").innerHTML = currentText.length;
+                document.getElementById("fixer").style.backgroundColor = "skyblue";
+                document.getElementById("status").innerHTML = document.title + ": " + message;
+            }
+        </script>
+    </div>
+</body>
+</html>
